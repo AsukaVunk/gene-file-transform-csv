@@ -47,8 +47,6 @@ def print_process_info(step, csv_file_name, csv_file_line_num):
 
 
 def tsv_file_transform(gene_file_path):
-    # 处理tsv文件或csv行数
-    tsv_file_line_num = 0
     # 生成对应csv文件名称
     csv_file_name = gene_file_path.split("/")[-1].replace('.tsv', '') + '.csv'
     create_new_csv_file(csv_file_name)
