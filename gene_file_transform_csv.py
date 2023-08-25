@@ -2,12 +2,6 @@ import csv
 import time
 
 
-def gc_file_transform(gene_file_path):
-    # 生成对应csv文件名称
-    csv_file_name = gene_file_path.split("/")[-1].split(".")[0] + '.csv'
-    create_new_csv_file(csv_file_name)
-
-
 # 生成csv文件
 def create_new_csv_file(csv_file_name):
     # 生成对应csv文件路径
@@ -52,12 +46,26 @@ def tsv_file_transform(gene_file_path):
     create_new_csv_file(csv_file_name)
 
 
+def rsid_file_transform(gene_file_path):
+    # 生成对应csv文件名称
+    csv_file_name = gene_file_path.split("/")[-1].split(".")[0]+'.'+gene_file_path.split("/")[-1].split(".")[1] + '.csv'
+    create_new_csv_file(csv_file_name)
+
+
+def gc_file_transform(gene_file_path):
+    # 生成对应csv文件名称
+    csv_file_name = gene_file_path.split("/")[-1].split(".")[0] + '.csv'
+    create_new_csv_file(csv_file_name)
+
+
 def raw_file_transform(gene_file_path):
     raw_file_type =gene_file_path.split(".")[-1]
     if raw_file_type == 'gc':
         gc_file_transform(gene_file_path)
     elif raw_file_type == 'tsv':
         tsv_file_transform(gene_file_path)
+    elif raw_file_type == 'rsid':
+         rsid_file_transform(gene_file_path)
 
 
 if __name__ == '__main__':
